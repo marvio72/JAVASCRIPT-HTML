@@ -1,10 +1,13 @@
-import {
-  saludar
-} from './js/componentes.js';
-// import './styles.css';
-import './sass/estilos.scss';
-// import img from './assets/dcd5e077cf9f54ebe52d4f7ebe8c3080.png';
+const jokeUrl = 'https://api.chucknorris.io/jokes/random';
 
-const nombre = 'Marco 48';
-
-saludar(nombre);
+fetch(jokeUrl).then(resp => {
+  // resp.json().then(data => {
+  //   console.log(data.id);
+  //   console.log(data.value);
+  // });
+    //Con restructuración
+  resp.json().then(({id, value}) => {
+    console.log(id);
+    console.log(value);
+  });
+});
