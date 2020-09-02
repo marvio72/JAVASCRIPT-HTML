@@ -21,13 +21,22 @@ const crearChistesHtml = () => {
     body.append(divChistes);
 };
 
+const iniciar = async() => {
+    numChiste();
+    dibujarChiste(await obtenerChiste());
+};
+
+const numChiste = () => {
+    contador ++;
+};
+
 const evento = () => {
     olList = document.querySelector('ol');
     btnOtro = document.querySelector('button');
 
     btnOtro.addEventListener('click', async()=> {
         btnOtro.disabled = true;
-        contador = contador + 1;
+        numChiste();
         dibujarChiste(await obtenerChiste());
         btnOtro.disabled = false;
     });
@@ -45,5 +54,6 @@ const dibujarChiste = (chiste) => {
 
 export const init = () => {
     crearChistesHtml();
+    iniciar();
     evento();
 };
